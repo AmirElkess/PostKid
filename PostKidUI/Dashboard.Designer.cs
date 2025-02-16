@@ -30,7 +30,7 @@
         {
             formHeader = new Label();
             apiLabel = new Label();
-            textBox1 = new TextBox();
+            apiText = new TextBox();
             resultsText = new TextBox();
             callApi = new Button();
             statusStrip = new StatusStrip();
@@ -59,13 +59,14 @@
             apiLabel.Text = "API:";
             apiLabel.Click += label2_Click;
             // 
-            // textBox1
+            // apiText
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(86, 118);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(716, 37);
-            textBox1.TabIndex = 2;
+            apiText.BorderStyle = BorderStyle.FixedSingle;
+            apiText.Location = new Point(86, 118);
+            apiText.Name = "apiText";
+            apiText.Size = new Size(1506, 37);
+            apiText.TabIndex = 2;
+            apiText.TextChanged += textBox1_TextChanged;
             // 
             // resultsText
             // 
@@ -74,15 +75,15 @@
             resultsText.Name = "resultsText";
             resultsText.ReadOnly = true;
             resultsText.ScrollBars = ScrollBars.Both;
-            resultsText.Size = new Size(890, 267);
+            resultsText.Size = new Size(1700, 645);
             resultsText.TabIndex = 3;
             resultsText.TextChanged += resultsText_TextChanged;
             // 
             // callApi
             // 
-            callApi.Location = new Point(808, 118);
+            callApi.Location = new Point(1598, 118);
             callApi.Name = "callApi";
-            callApi.Size = new Size(112, 37);
+            callApi.Size = new Size(132, 39);
             callApi.TabIndex = 4;
             callApi.Text = "Request";
             callApi.UseVisualStyleBackColor = true;
@@ -92,9 +93,9 @@
             // 
             statusStrip.ImageScalingSize = new Size(24, 24);
             statusStrip.Items.AddRange(new ToolStripItem[] { systemStatus });
-            statusStrip.Location = new Point(0, 527);
+            statusStrip.Location = new Point(0, 897);
             statusStrip.Name = "statusStrip";
-            statusStrip.Size = new Size(950, 37);
+            statusStrip.Size = new Size(1754, 37);
             statusStrip.TabIndex = 5;
             statusStrip.Text = "statusStrip1";
             // 
@@ -120,12 +121,12 @@
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(950, 564);
+            ClientSize = new Size(1754, 934);
             Controls.Add(resultsLabel);
             Controls.Add(statusStrip);
             Controls.Add(callApi);
             Controls.Add(resultsText);
-            Controls.Add(textBox1);
+            Controls.Add(apiText);
             Controls.Add(apiLabel);
             Controls.Add(formHeader);
             Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -143,7 +144,7 @@
 
         private Label formHeader;
         private Label apiLabel;
-        private TextBox textBox1;
+        private TextBox apiText;
         private TextBox resultsText;
         private Button callApi;
         private StatusStrip statusStrip;

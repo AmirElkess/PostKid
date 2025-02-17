@@ -9,7 +9,7 @@ namespace PostKidUI
 {
     public partial class Dashboard : Form
     {
-        private readonly ApiAccess api = new();
+        private readonly IApiAccess api = new ApiAccess();
         public Dashboard()
         {
             InitializeComponent();
@@ -29,6 +29,12 @@ namespace PostKidUI
         {
 
             // validate API URL
+            if (!api.isValidUrl(apiText.Text))
+            {
+                systemStatus.Text = "Invalid URL";
+                resultsText.Text = "";
+                return;
+            }   
 
 
             try

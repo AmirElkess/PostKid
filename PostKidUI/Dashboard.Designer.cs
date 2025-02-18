@@ -36,6 +36,7 @@
             statusStrip = new StatusStrip();
             systemStatus = new ToolStripStatusLabel();
             resultsLabel = new Label();
+            httpVerbSelection = new ComboBox();
             statusStrip.SuspendLayout();
             SuspendLayout();
             // 
@@ -62,9 +63,9 @@
             // apiText
             // 
             apiText.BorderStyle = BorderStyle.FixedSingle;
-            apiText.Location = new Point(86, 118);
+            apiText.Location = new Point(283, 122);
             apiText.Name = "apiText";
-            apiText.Size = new Size(1506, 37);
+            apiText.Size = new Size(1309, 37);
             apiText.TabIndex = 2;
             apiText.TextChanged += textBox1_TextChanged;
             // 
@@ -81,7 +82,7 @@
             // 
             // callApi
             // 
-            callApi.Location = new Point(1598, 118);
+            callApi.Location = new Point(1598, 122);
             callApi.Name = "callApi";
             callApi.Size = new Size(132, 39);
             callApi.TabIndex = 4;
@@ -116,12 +117,23 @@
             resultsLabel.Text = "Results:";
             resultsLabel.Click += label1_Click;
             // 
+            // httpVerbSelection
+            // 
+            httpVerbSelection.DropDownStyle = ComboBoxStyle.DropDownList;
+            httpVerbSelection.FormattingEnabled = true;
+            httpVerbSelection.Items.AddRange(new object[] { "GET", "POST" });
+            httpVerbSelection.Location = new Point(86, 121);
+            httpVerbSelection.Name = "httpVerbSelection";
+            httpVerbSelection.Size = new Size(191, 38);
+            httpVerbSelection.TabIndex = 7;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1754, 934);
+            Controls.Add(httpVerbSelection);
             Controls.Add(resultsLabel);
             Controls.Add(statusStrip);
             Controls.Add(callApi);
@@ -150,5 +162,6 @@
         private StatusStrip statusStrip;
         private Label resultsLabel;
         private ToolStripStatusLabel systemStatus;
+        private ComboBox httpVerbSelection;
     }
 }

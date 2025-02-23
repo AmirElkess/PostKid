@@ -31,13 +31,19 @@
             formHeader = new Label();
             apiLabel = new Label();
             apiText = new TextBox();
-            resultsText = new TextBox();
             callApi = new Button();
             statusStrip = new StatusStrip();
             systemStatus = new ToolStripStatusLabel();
-            resultsLabel = new Label();
             httpVerbSelection = new ComboBox();
+            callData = new TabControl();
+            bodyTab = new TabPage();
+            bodyText = new TextBox();
+            outputTab = new TabPage();
+            resultsText = new TextBox();
             statusStrip.SuspendLayout();
+            callData.SuspendLayout();
+            bodyTab.SuspendLayout();
+            outputTab.SuspendLayout();
             SuspendLayout();
             // 
             // formHeader
@@ -69,17 +75,6 @@
             apiText.TabIndex = 2;
             apiText.TextChanged += textBox1_TextChanged;
             // 
-            // resultsText
-            // 
-            resultsText.Location = new Point(30, 231);
-            resultsText.Multiline = true;
-            resultsText.Name = "resultsText";
-            resultsText.ReadOnly = true;
-            resultsText.ScrollBars = ScrollBars.Both;
-            resultsText.Size = new Size(1700, 645);
-            resultsText.TabIndex = 3;
-            resultsText.TextChanged += resultsText_TextChanged;
-            // 
             // callApi
             // 
             callApi.Location = new Point(1598, 122);
@@ -107,16 +102,6 @@
             systemStatus.Size = new Size(72, 30);
             systemStatus.Text = "Ready";
             // 
-            // resultsLabel
-            // 
-            resultsLabel.AutoSize = true;
-            resultsLabel.Location = new Point(30, 182);
-            resultsLabel.Name = "resultsLabel";
-            resultsLabel.Size = new Size(84, 30);
-            resultsLabel.TabIndex = 6;
-            resultsLabel.Text = "Results:";
-            resultsLabel.Click += label1_Click;
-            // 
             // httpVerbSelection
             // 
             httpVerbSelection.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -127,17 +112,68 @@
             httpVerbSelection.Size = new Size(191, 38);
             httpVerbSelection.TabIndex = 7;
             // 
+            // callData
+            // 
+            callData.Controls.Add(bodyTab);
+            callData.Controls.Add(outputTab);
+            callData.Location = new Point(30, 193);
+            callData.Name = "callData";
+            callData.SelectedIndex = 0;
+            callData.Size = new Size(1700, 584);
+            callData.TabIndex = 8;
+            // 
+            // bodyTab
+            // 
+            bodyTab.Controls.Add(bodyText);
+            bodyTab.Location = new Point(4, 39);
+            bodyTab.Name = "bodyTab";
+            bodyTab.Padding = new Padding(3);
+            bodyTab.Size = new Size(1692, 541);
+            bodyTab.TabIndex = 0;
+            bodyTab.Text = "Body";
+            bodyTab.UseVisualStyleBackColor = true;
+            // 
+            // bodyText
+            // 
+            bodyText.Dock = DockStyle.Fill;
+            bodyText.Location = new Point(3, 3);
+            bodyText.Multiline = true;
+            bodyText.Name = "bodyText";
+            bodyText.Size = new Size(1686, 535);
+            bodyText.TabIndex = 0;
+            // 
+            // outputTab
+            // 
+            outputTab.Controls.Add(resultsText);
+            outputTab.Location = new Point(4, 39);
+            outputTab.Name = "outputTab";
+            outputTab.Padding = new Padding(3);
+            outputTab.Size = new Size(1692, 541);
+            outputTab.TabIndex = 1;
+            outputTab.Text = "Output";
+            outputTab.UseVisualStyleBackColor = true;
+            // 
+            // resultsText
+            // 
+            resultsText.Dock = DockStyle.Fill;
+            resultsText.Location = new Point(3, 3);
+            resultsText.Multiline = true;
+            resultsText.Name = "resultsText";
+            resultsText.ReadOnly = true;
+            resultsText.ScrollBars = ScrollBars.Both;
+            resultsText.Size = new Size(1686, 535);
+            resultsText.TabIndex = 4;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1754, 934);
+            Controls.Add(callData);
             Controls.Add(httpVerbSelection);
-            Controls.Add(resultsLabel);
             Controls.Add(statusStrip);
             Controls.Add(callApi);
-            Controls.Add(resultsText);
             Controls.Add(apiText);
             Controls.Add(apiLabel);
             Controls.Add(formHeader);
@@ -148,6 +184,11 @@
             Load += Dashboard_Load;
             statusStrip.ResumeLayout(false);
             statusStrip.PerformLayout();
+            callData.ResumeLayout(false);
+            bodyTab.ResumeLayout(false);
+            bodyTab.PerformLayout();
+            outputTab.ResumeLayout(false);
+            outputTab.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -157,11 +198,14 @@
         private Label formHeader;
         private Label apiLabel;
         private TextBox apiText;
-        private TextBox resultsText;
         private Button callApi;
         private StatusStrip statusStrip;
-        private Label resultsLabel;
         private ToolStripStatusLabel systemStatus;
         private ComboBox httpVerbSelection;
+        private TabControl callData;
+        private TabPage bodyTab;
+        private TabPage outputTab;
+        private TextBox resultsText;
+        private TextBox bodyText;
     }
 }

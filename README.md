@@ -3,3 +3,5 @@
 
 - Supports GET, POST, PATCH, DELETE requests
 - Beautifies JSON output
+
+**Still a work in progress**

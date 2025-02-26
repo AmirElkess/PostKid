@@ -145,10 +145,10 @@
             // outputTab
             // 
             outputTab.Controls.Add(resultsText);
-            outputTab.Location = new Point(4, 39);
+            outputTab.Location = new Point(4, 34);
             outputTab.Name = "outputTab";
             outputTab.Padding = new Padding(3);
-            outputTab.Size = new Size(1692, 541);
+            outputTab.Size = new Size(1692, 546);
             outputTab.TabIndex = 1;
             outputTab.Text = "Output";
             outputTab.UseVisualStyleBackColor = true;
@@ -161,7 +161,7 @@
             resultsText.Name = "resultsText";
             resultsText.ReadOnly = true;
             resultsText.ScrollBars = ScrollBars.Both;
-            resultsText.Size = new Size(1686, 535);
+            resultsText.Size = new Size(1686, 540);
             resultsText.TabIndex = 4;
             // 
             // Dashboard

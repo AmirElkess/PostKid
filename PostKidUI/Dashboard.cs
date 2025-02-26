@@ -13,6 +13,7 @@ namespace PostKidUI
         public Dashboard()
         {
             InitializeComponent();
+            httpVerbSelection.SelectedIndex = 0;
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
@@ -46,6 +47,8 @@ namespace PostKidUI
                 JToken parsedJson = JToken.Parse(response);
                 var beautified = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
                 resultsText.Text = beautified;
+
+                callData.SelectedTab = outputTab;
 
                 systemStatus.Text = "Ready";
             }

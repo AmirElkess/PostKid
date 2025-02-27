@@ -1,15 +1,42 @@
 ﻿
+using System.Text;
+
 namespace PostKidLibrary;
 
 public class ApiAccess : IApiAccess
 {
     private readonly HttpClient client = new();
 
-    // add support for POST
 
-    public async Task<string> callApiAsync(string url, HttpAction action = HttpAction.GET)
+    public async Task<string> callApiAsync(
+        string url,
+        string content,
+        HttpAction action = HttpAction.GET
+        )
     {
-        var response = await client.GetAsync(url);
+        StringContent stringContent = new StringContent(content, Encoding.UTF8, "application/json");
+        return await callApiAsync(url, stringContent, action);
+    }
+
+    public async Task<string> callApiAsync(
+        string url,
+        HttpContent? content = null,
+        HttpAction action = HttpAction.GET
+        )
+    {
+        HttpResponseMessage? response; 
+
+        switch (action)
+        {
+            case HttpAction.GET:
+                response = await client.GetAsync(url);
+                break;
+            case HttpAction.POST:
+                response = await client.PostAsync(url, content);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(action), action, null);
+        }
 
         if (response.IsSuccessStatusCode)
         {
@@ -21,7 +48,6 @@ public class ApiAccess : IApiAccess
         {
             return $"Error: {response.StatusCode}";
         }
-
     }
 
     public bool isValidUrl(string url)

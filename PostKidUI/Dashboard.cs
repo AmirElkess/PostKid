@@ -37,18 +37,26 @@ namespace PostKidUI
                 return;
             }
 
+            HttpAction action;
+            if (Enum.TryParse(httpVerbSelection.SelectedItem!.ToString(), out action) == false)
+            {
+                systemStatus.Text = "Invalid HTTP Action";
+                return;
+            }
+
 
             try
             {
                 systemStatus.Text = "Calling API...";
 
                 // setting a beautified JSON to the text box
-                string response = await api.callApiAsync(apiText.Text);
+                string response = await api.callApiAsync(apiText.Text, bodyText.Text, action);
                 JToken parsedJson = JToken.Parse(response);
                 var beautified = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
                 resultsText.Text = beautified;
 
                 callData.SelectedTab = outputTab;
+                outputTab.Focus();
 
                 systemStatus.Text = "Ready";
             }

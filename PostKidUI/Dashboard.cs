@@ -87,5 +87,10 @@ namespace PostKidUI
         {
 
         }
+
+        private void httpVerbSelection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
